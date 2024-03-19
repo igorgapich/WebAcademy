@@ -3,24 +3,34 @@
 
 <h1>Info Student</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
-            <th scope="col">Age</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var student in Model)
-        {
+<a asp-controller="Student" asp-action="Create" type="button" class="btn btn-secondary">
+    Create
+</a>
+
+<div class="col-6 m-auto">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <th scope="row">@student.Id</th>
-                <td>@student.FirstName</td>
-                <td>@student.LastName</td>
-                <td>@student.Age</td>
+                <th scope="col">Id</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Age</th>
+                <th scope="col">Options</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <th scope="row">@student.Id</th>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Age</td>
+                    <td><a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id">Detail</a></td>
+                    <td><a asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">Edit</a></td>
+                    <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
